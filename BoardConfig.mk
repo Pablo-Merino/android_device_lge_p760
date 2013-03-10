@@ -35,6 +35,8 @@ TARGET_ARCH_VARIANT_FPU := neon
 TARGET_BOARD_PLATFORM := omap4
 TARGET_BOOTLOADER_BOARD_NAME := p760
 
+TARGET_OTA_ASSERT_DEVICE := p760,p765,p768
+
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_RADIOIMAGE := true
 
@@ -48,8 +50,7 @@ BOARD_KERNEL_BASE := 0x80000000
 TARGET_PREBUILT_KERNEL := device/lge/p760/prebuilt/kernel
 
 # Storage
-BOARD_VOLD_MAX_PARTITIONS    := 17
-BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
+BOARD_VOLD_MAX_PARTITIONS := 17
 
 USE_OPENGL_RENDERER := true
 BOARD_EGL_CFG := device/lge/p760/config/egl.cfg
@@ -85,12 +86,9 @@ WIFI_DRIVER_FW_PATH_AP      := "/system/etc/firmware/fw_bcmdhd_apsta.bin"
 WIFI_DRIVER_MODULE_NAME     := "bcmdhd"
 WIFI_BAND                   := 802_11_ABG
 BOARD_LEGACY_NL80211_STA_EVENTS := true
-<<<<<<< HEAD
-=======
 
 # Gps
 BOARD_HAVE_GPS := true
->>>>>>> Made some updates
 
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
@@ -125,12 +123,6 @@ BOARD_USE_CUSTOM_FONT := true
 # Bootanimation
 TARGET_BOOTANIMATION_PRELOAD := true
 TARGET_BOOTANIMATION_TEXTURE_CACHE := true
-
-# Media / Radio
-BUILD_FM_RADIO := true
-BUILD_TI_FM_APPS := true
-BOARD_HAVE_FM_RADIO := true
-BOARD_GLOBAL_CFLAGS += -DHAVE_FM_RADIO
 
 #twrp
 DEVICE_RESOLUTION := 540x960

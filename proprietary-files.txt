@@ -26,11 +26,7 @@ etc/firmware/fw_bcmdhd_p2p.bin
 
 ## audio
 lib/hw/audio.primary.omap4.so
-<<<<<<< HEAD
 lib/hw/audio_policy.omap4.so
-=======
-lib/hw/audio_policy.default.so
->>>>>>> Made some updates
 lib/libtinyalsa.so
 
 ## camera
@@ -85,9 +81,17 @@ vendor/lib/libsrv_um_SGX540_120.so
 vendor/lib/libusc_SGX540_120.so
 
 ## TI DOMX
+lib/libdomx.so
+lib/libion.so
+lib/libmm_osal.so
 lib/libOMX.ITTIAM.WMA.decode.so
 lib/libOMX.ITTIAM.WMALSL.decode.so
 lib/libOMX.ITTIAM.WMAPRO.decode.so
-lib/libion.so
-lib/libmm_osal.so
+lib/libOMX.TI.DUCATI1.MISC.SAMPLE.so
+lib/libOMX.TI.DUCATI1.VIDEO.CAMERA.so
+lib/libOMX.TI.DUCATI1.VIDEO.DECODER.secure.so
+lib/libOMX.TI.DUCATI1.VIDEO.DECODER.so
+lib/libOMX.TI.DUCATI1.VIDEO.H264E.so
+lib/libOMX.TI.DUCATI1.VIDEO.MPEG4E.so
+lib/libOMX_Core.so
 lib/libtiutils.so

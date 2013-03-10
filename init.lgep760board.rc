@@ -15,8 +15,8 @@ on early-init
     export EXTERNAL_ADD_STORAGE /mnt/sdcard/external_sd
     
 # for backwards compatibility
-    symlink /mnt/sdcard /sdcard
-    symlink /mnt/sdcard/external_sd /sdcard/external_sd
+    symlink /mnt/sdcard /mnt/sdcard
+    symlink /mnt/sdcard/external_sd /mnt/sdcard/external_sd
 
 # Immersion changes
     export VIBE_PIPE_PATH /dev/pipes
@@ -94,6 +94,10 @@ on post-fs-data
 # create directory for lgdrm
     mkdir /data/lgdrm 0770 lgdrm lgdrm_acc
 
+# LGE_CHANGE_S make drm partition mount point, drm partion will be mounted here   
+	mkdir /persist-lg 0771 system system
+# LGE_CHANGE_E make drm partition mount point
+
 # LGE_CHANGE_S make lgdrm, divxdrm directory in drm partion
     chown system system /persist-lg
     chmod 0771 /persist-lg   
@@ -143,7 +147,11 @@ on post-fs-data
     mkdir /data/gps/log
     chmod 770 /data/gps/log
     chown system system /data/gps/log 
+    mkdir /data/cache
+    chmod 770 /data/cache
+    chown system system /data/cache
 
+    
     chown system system /system/bin/glgps
     chown system system /system/etc/gps_brcm_conf.xml
     chown system system /system/etc/cert/
@@ -356,6 +364,10 @@ on boot
      write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor userspace
      write /sys/devices/system/cpu/cpu0/cpufreq/scaling_setspeed 800000
      write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
+
+on charger
+    # disable second core while charging (cpufreq gets handled by charger blob)
+    write /sys/devices/system/cpu/cpu1/online 0
 
 service charger /charger
     class charger

@@ -38,14 +38,11 @@
          android:primary="true"
          android:emulated="true"
          android:removable="false"
-<<<<<<< HEAD
-         android:allowMassStorage="true" />
-=======
          android:mtpReserve="100" />
->>>>>>> Made some updates
     
     <storage android:mountPoint="/mnt/sdcard/external_sd"
          android:storageDescription="@string/storage_sd_card"
+         android:primary="false"
          android:removable="true"
          android:allowMassStorage="true" />
 </StorageList>

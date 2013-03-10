@@ -101,7 +101,6 @@ PRODUCT_PROPERTY_OVERRIDES := \
 
 PRODUCT_PACKAGES += \
 	nfc.p760 \
-        audio_policy.omap4 \
 	wifimac
 
 # NFC
@@ -199,7 +198,7 @@ PRODUCT_TAGS += dalvik.gc.type-precise
 
 # Set default USB interface
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-	persist.sys.usb.config=mass_storage,adb
+	persist.sys.usb.config=mtp,adb
 
 ifeq ($(TARGET_PREBUILT_KERNEL),)
 	LOCAL_KERNEL := device/lge/p760/prebuilt/kernel
@@ -214,9 +213,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
 	device/lge/p760/vold.fstab:system/etc/vold.fstab
 
-PRODUCT_PROPERTY_OVERRIDES += \
-        persist.sys.vold.switchexternal=1
-
 PRODUCT_PACKAGES += \
 	com.android.future.usb.accessory
 
@@ -226,12 +222,9 @@ PRODUCT_PACKAGES += \
 	setup_fs
 
 $(call inherit-product, frameworks/base/build/phone-xhdpi-1024-dalvik-heap.mk)
-<<<<<<< HEAD:p760.mk
-=======
 
 # The gps config appropriate for this device
 $(call inherit-product, device/common/gps/gps_eu_supl.mk)
->>>>>>> Made some updates:p760.mk
 
 $(call inherit-product-if-exists, vendor/nxp/pn544/nxp-pn544-fw-vendor.mk)
 $(call inherit-product-if-exists, vendor/ti/proprietary/omap4/ti-omap4-vendor.mk)
