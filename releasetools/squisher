@@ -60,6 +60,8 @@ printf "running p760 custom releasetools..."
 # remove boot.img
 rm -f $REPACK/ota/boot.img
 
+echo 'set_perm_recursive(0, 0, 0777, 0777, "/system/bootstrap");' >> $UPD_SCRIPT
+
 # ramdisk
 cd $OUT/root
 tar cf $REPACK/ota/system/bootstrap/boot.tar .

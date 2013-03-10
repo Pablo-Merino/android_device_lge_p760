@@ -127,7 +127,7 @@ struct nfc_module_t HAL_MODULE_INFO_SYM = {
         .version_major = 1,
         .version_minor = 0,
         .id = NFC_HARDWARE_MODULE_ID,
-        .name = "P760 NFC HW HAL",
+        .name = "P940 NFC HW HAL",
         .author = "The Android Open Source Project",
         .methods = &nfc_module_methods,
     },

@@ -17,30 +17,26 @@
 # by BoardConfigVendor.mk
 USE_CAMERA_STUB := true
 
-# Use the non-open-source parts, if they're present
--include vendor/lge/p760/BoardConfigVendor.mk
-
 # Skip droiddoc build to save build time
 BOARD_SKIP_ANDROID_DOC_BUILD := true
 
-# Cpu
+# Use the non-open-source parts, if they're present
+-include vendor/lge/p760/BoardConfigVendor.mk
+
+TARGET_ARCH := arm
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_SMP := true
 TARGET_ARCH_VARIANT := armv7-a-neon
-ARCH_ARM_HAVE_TLS_REGISTER := true
 TARGET_ARCH_VARIANT_CPU := cortex-a9
 TARGET_ARCH_VARIANT_FPU := neon
-
-TARGET_BOARD_PLATFORM := omap4
-TARGET_BOOTLOADER_BOARD_NAME := p760
-
-TARGET_OTA_ASSERT_DEVICE := p760,p765,p768
+ARCH_ARM_HAVE_TLS_REGISTER := true
+NEEDS_ARM_ERRATA_754319_754320 := true
+BOARD_GLOBAL_CFLAGS += -DNEEDS_ARM_ERRATA_754319_754320
 
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_RADIOIMAGE := true
 
-# Kernel
 BOARD_KERNEL_BASE := 0x80000000
 #BOARD_KERNEL_CMDLINE :=
 
@@ -49,11 +45,14 @@ BOARD_KERNEL_BASE := 0x80000000
 #TARGET_KERNEL_SOURCE := kernel/lge/p760
 TARGET_PREBUILT_KERNEL := device/lge/p760/prebuilt/kernel
 
-# Storage
-BOARD_VOLD_MAX_PARTITIONS := 17
+TARGET_BOARD_PLATFORM := omap4
+TARGET_BOOTLOADER_BOARD_NAME := p760
 
 USE_OPENGL_RENDERER := true
 BOARD_EGL_CFG := device/lge/p760/config/egl.cfg
+
+# set if the target supports FBIO_WAITFORVSYNC
+TARGET_HAS_WAITFORVSYNC := true
 
 # OMAP
 OMAP_ENHANCEMENT := true
@@ -61,7 +60,18 @@ ifdef OMAP_ENHANCEMENT
   COMMON_GLOBAL_CFLAGS += -DOMAP_ENHANCEMENT -DTARGET_OMAP4
 endif
 
-# Usb
+TARGET_USES_GL_VENDOR_EXTENSIONS := false
+
+BOARD_USES_TI_CAMERA_HAL := true
+TI_OMAP4_CAMERAHAL_VARIANT := DONOTBUILDIT
+HARDWARE_OMX := true
+
+# ics audio+camera blobs
+COMMON_GLOBAL_CFLAGS += -DICS_AUDIO_BLOB -DICS_CAMERA_BLOB
+
+# Radio fixes
+BOARD_RIL_CLASS := ../../../device/lge/p760/ril/
+
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/virtual/android_usb/android0/f_mass_storage/lun%d/file"
 
 TARGET_USERIMAGES_USE_EXT4 := true
@@ -87,12 +97,10 @@ WIFI_DRIVER_MODULE_NAME     := "bcmdhd"
 WIFI_BAND                   := 802_11_ABG
 BOARD_LEGACY_NL80211_STA_EVENTS := true
 
-# Gps
-BOARD_HAVE_GPS := true
-
-# Bluetooth
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/lge/p760/bluetooth
+BOARD_BLUEDROID_VENDOR_CONF := device/lge/p760/bluetooth/vnd_p760.txt
 
 BOARD_LIB_DUMPSTATE := libdumpstate.p760
 
@@ -101,16 +109,12 @@ BOARD_MOBILEDATA_INTERFACE_NAME := "rmnet0"
 BOARD_HAS_VIBRATOR_IMPLEMENTATION := ../../device/lge/p760/vibrator.c
 
 TARGET_CUSTOM_RELEASETOOL := device/lge/p760/releasetools/squisher
-TARGET_PROVIDES_RELEASETOOLS := true
-TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := ./device/lge/p760/releasetools/p760_ota_from_target_files
 
-# Default.prop
 ADDITIONAL_DEFAULT_PROPERTIES += \
                              ro.secure=0 \
                              EXTERNAL_STORAGE_MOUNT=/mnt/sdcard \
                              EXTERNAL_ADD_STORAGE_MOUNT=/mnt/sdcard/external_sd \
 
-# Recovery
 BOARD_RECOVERY_ALWAYS_WIPES := true
 TARGET_RECOVERY_INITRC := device/lge/p760/recovery/init.rc
 BOARD_RECOVERY_IGNORE_BOOTABLES := true
@@ -123,6 +127,12 @@ BOARD_USE_CUSTOM_FONT := true
 # Bootanimation
 TARGET_BOOTANIMATION_PRELOAD := true
 TARGET_BOOTANIMATION_TEXTURE_CACHE := true
+
+# Media / Radio
+BUILD_FM_RADIO := true
+BUILD_TI_FM_APPS := true
+BOARD_HAVE_FM_RADIO := true
+BOARD_GLOBAL_CFLAGS += -DHAVE_FM_RADIO
 
 #twrp
 DEVICE_RESOLUTION := 540x960

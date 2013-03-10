@@ -5,7 +5,8 @@ $(call inherit-product, vendor/cm/config/gsm.mk)
 PRODUCT_RELEASE_NAME := P760
 
 # Boot animation
-TARGET_BOOTANIMATION_NAME := vertical-540x960
+TARGET_SCREEN_HEIGHT := 960
+TARGET_SCREEN_WIDTH := 540
 
 # Inherit some common CM stuff.
 $(call inherit-product, vendor/cm/config/common_full_phone.mk)
@@ -24,4 +25,5 @@ PRODUCT_MODEL := LG-P760
 PRODUCT_MANUFACTURER := LGE
 
 #Set build fingerprint / ID / Product Name ect.
-PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=p760 BUILD_FINGERPRINT="p760_open_eu/p760:4.0.4/IMM76L/P76010a.48125853:user/release-keys" PRIVATE_BUILD_DESC="p760-user 4.0.4 IMM76I 330937 release-keys"
+PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=p760 BUILD_FINGERPRINT="lge/p760/p760:4.2.2/IMM76D/47E63EA8:user/release-keys" PRIVATE_BUILD_DESC="p760-user 4.2.2 IMM76D 47E63EA5 release-keys"
+

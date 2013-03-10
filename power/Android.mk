@@ -1,4 +1,4 @@
-# Copyright (C) 2011 The CyanogenMod project
+# Copyright (C) 2012 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,23 +13,15 @@
 # limitations under the License.
 
 
-ifneq ($(filter p760, $(TARGET_BOOTLOADER_BOARD_NAME)),)
+LOCAL_PATH := $(call my-dir)
 
-LOCAL_PATH:= $(call my-dir)
-
+# HAL module implemenation stored in
+# hw/<POWERS_HARDWARE_MODULE_ID>.<ro.hardware>.so
 include $(CLEAR_VARS)
-LOCAL_MODULE_TAGS := optional
-LOCAL_SRC_FILES := wifimac_native.c
-LOCAL_PRELINK_MODULE := false
-LOCAL_MODULE := wifimac_native
-include $(BUILD_EXECUTABLE)
 
-include $(CLEAR_VARS)
+LOCAL_MODULE_PATH := $(TARGET_OUT_SHARED_LIBRARIES)/hw
+LOCAL_SHARED_LIBRARIES := liblog libcutils
+LOCAL_SRC_FILES := power_p760.c
+LOCAL_MODULE := power.p760
 LOCAL_MODULE_TAGS := optional
-LOCAL_MODULE := wifimac
-LOCAL_MODULE_CLASS := ETC
-LOCAL_MODULE_PATH := $(TARGET_OUT)/bin
-LOCAL_SRC_FILES := $(LOCAL_MODULE)
-include $(BUILD_PREBUILT)
-
-endif
+include $(BUILD_SHARED_LIBRARY)
