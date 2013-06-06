@@ -1,8 +1,9 @@
 etc/cert/lge.cer
-vendor/firmware/fw_bcmdhd.bin
-vendor/firmware/fw_bcmdhd_apsta.bin
-vendor/firmware/fw_bcmdhd_mfgtest.bin
-vendor/firmware/fw_bcmdhd_p2p.bin
+etc/firmware/fw_bcmdhd.bin
+etc/firmware/fw_bcmdhd_apsta.bin
+etc/firmware/fw_bcmdhd_mfgtest.bin
+etc/firmware/fw_bcmdhd_p2p.bin
+bin/immvibed_qcoin
 bin/BCM4330B1_002.001.003.0750.0865.hcd
 lib/libril.so
 lib/hw/audio.primary.omap4.so
