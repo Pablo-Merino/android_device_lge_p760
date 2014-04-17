@@ -2,7 +2,7 @@ etc/cert/lge.cer
 etc/firmware/fw_bcmdhd.bin
 etc/firmware/fw_bcmdhd_apsta.bin
 etc/firmware/fw_bcmdhd_p2p.bin
-etc/firmware/BCM4330B1_002.001.003.0550.0000_TESTONLY_LGE_X3.hcd
+#etc/firmware/BCM4330B1_002.001.003.0550.0000_TESTONLY_LGE_X3.hcd
 lib/libril.so
 #lib/hw/audio.primary.omap4.so
 lib/hw/gps.omap4.so
@@ -11,8 +11,8 @@ lib/hw/camera.omap4.so
 lib/hw/nfc.default.so
 lib/libini.so
 lib/lge-ril.so
-lib/libhdcp.so
-lib/liblgehdmi.so
+#lib/libhdcp.so
+#lib/liblgehdmi.so
 #lib/libtinyalsa.so
 vendor/firmware/ducati-m3.bin
 vendor/firmware/libpn544_fw.so
@@ -30,11 +30,11 @@ vendor/lib/liblvvetx.so
 vendor/lib/libsmapi.so
 vendor/lib/libsrv_um_SGX540_120.so
 vendor/lib/libusc_SGX540_120.so
-vendor/lib/libtf_crypto_sst.so
+#vendor/lib/libtf_crypto_sst.so
 vendor/lib/egl/libGLESv2_POWERVR_SGX540_120.so
 vendor/lib/egl/libEGL_POWERVR_SGX540_120.so
 vendor/lib/egl/libGLESv1_CM_POWERVR_SGX540_120.so
-vendor/bin/pvrsrvinit_SGX540_120
+#vendor/bin/pvrsrvinit_SGX540_120
 vendor/bin/pvrsrvinit
 bin/sensord
 bin/glgps
